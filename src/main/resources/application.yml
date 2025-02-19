@@ -1,0 +1,30 @@
+server:
+  port: 8080
+spring:
+  datasource:
+    driver-class-name: org.postgresql.Driver
+    url: jdbc:postgresql://localhost:5432/Yeni
+    username: postgres
+    password: 123
+  jpa:
+    database-platform: org.hibernate.dialect.PostgreSQLDialect
+    show-sql: true
+    open-in-view: false
+
+  rabbitmq:
+   host: localhost
+   username: guest
+   password: guest
+   listener:
+    simple:
+      retry:
+        enabled: true
+        initial-interval: 3s
+        max-attempts: 5
+        max-interval: 5s
+        multiplier: 1
+      missing-queues-fatal: false
+rabbitmq:
+  queue:
+    test: TEST_Q
+    test-dlq: TEST_DLQ
